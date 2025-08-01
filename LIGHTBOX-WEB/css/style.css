@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #ddd;
+}
+
+h1 {
+    margin: 30px 0;
+    font-size: 50px;
+    text-align: center;
+    text-shadow: 1px 1px 1px white;
+}
+
+.container {
+    width: 900px;
+    height: auto;
+    border: 2px solid;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 0 3px 1px rgba(0,0,0.1);
+    border-radius: 8px;
+    background-color: #eaeaea;
+}
+
+.container > ul > li {
+    list-style-type: none;
+}
+
+.container > ul > li, a > img, span {
+    border-radius: 50%;
+}
+
+.container > ul > li {
+    width: 120px;
+    height: 120px;
+    border: 3px solid rgb(94, 11, 2);
+    position: relative;
+    top: 0;
+    left: 0;
+    float: left;
+    margin: 11px;
+}
+
+.clear {
+    clear: both;
+}
+
+.container > ul > li > a > img {
+    width: 100%;
+    height: 100%;
+}
+
+.container > ul > li > a > span {
+    width: 120px;
+    height: 120px;      
+    display: block;
+    font-size: 14px;
+    text-shadow: 1px 1px 3px #eaeaea;
+    background-color: rgba(200, 200, 200, 0.5);
+    color: #1b0d0d;
+    font-weight: bold;
+    position: absolute;
+    top: -2px;
+    left: -3px;
+    text-align: center;
+    line-height: 120px;
+    opacity: 0;
+    transition: 0.5s;
+    transform: scale(0) rotate(0);
+}
+
+.container > ul > li > a:hover > span {
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+}
+
+/* overlay */
+.overlay {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0);
+    z-index: 9999;
+    transition: 0.8s;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.overlay:target {
+    width: auto;    
+    height: auto;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.overlay img {
+    max-height: 100%;
+    box-shadow: 2px 2px 7px rgba(0,0,0,0.5);
+    border-radius: 3px;
+}
+
+.overlay:target img {
+    animation: zoomAndFade 1.1s;
+}
+
+.overlay .close {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #333;
+    border-radius: 5px;
+    box-shadow: 2px 3px 3px rgb(80, 75, 75);
+    text-decoration: none;
+    line-height: 14px;
+    padding: 7px;
+    opacity: 0;
+    font-style: italic;
+}
+
+.overlay:target .close {
+    animation: slideDownFade 0.8s 0.8s forwards;
+}
+
+.overlay:target .next,
+.overlay:target .prev {
+    animation: fadeButton 0.8s 0.8s forwards;
+}
+
+.overlay .next {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 46%;
+    right: 490px;
+    color: #eaeaea;
+    opacity: 0;
+}
+
+.overlay .prev {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 46%;
+    left: 490px;
+    color: white;
+    opacity: 0;
+}
+
+.overlay .prev i {
+    width: 100%;
+    font-size: 55px;
+}
+
+.overlay .next i {
+    width: 100%;
+    font-size: 55px;
+}
+
+/* animasi */
+@keyframes fadeButton {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes zoomAndFade {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes slideDownFade {
+    0% {
+        opacity: 0;
+        margin-top: -40px;
+    }
+
+    100% {
+        opacity: 0.7;
+        margin-top: 0;
+    }
+}
